@@ -4,8 +4,8 @@ pipeline {
         stage ('Create and Copy Folder') {
             steps {
                 script {
-                    def sourceFolder = new File("d:\my Source")
-                    def destinationFolder = new File("d:\my destination")
+                    def sourceFolder = new File("D:\my Source")
+                    def destinationFolder = new File("D:\my destination")
             
                     sourceFolder.mkdirs()
                     destinationFolder.mkdirs()
