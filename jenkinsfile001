@@ -1,23 +1,17 @@
-pipeline{
- agent any    
-    
- stages{    
-     stage('Copy'){                         
-         steps{  
-                script{                        
-                    File sourceFolder = Document("D:\my source");
-                    File  destinationFolder = Document("D:\my destination");                                                   
-                    File[] listOfFiles = sourceFolder.listFiles();
-                    echo "Files Total: " + listOfFiles.length;  
-
-                    for (File file : listOfFiles) {
-                        if (file.isFile()) {
-                            echo file.getName()                                                                
-                            Files.copy(Paths.get(file.path), Paths.get("D:\my destination"));                                   
-                        }
-                    }                  
-                }                                
-            }                           
-        } 
+pipeline {
+    agent any
+    stages {
+        stage ('Create and Copy Folder') {
+            steps {
+                script {
+                    def sourceFolder = new File("d:\my-Source")
+                    def destinationFolder = new File("d:\my destination")
+            
+                    sourceFolder.mkdirs()
+                    destinationFolder.mkdirs()
+                    FileUtils.copyDirectory(sourceFolder, destinationFolder)
+                }
+            }
+        }
     }
 }
