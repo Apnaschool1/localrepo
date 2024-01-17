@@ -5,8 +5,8 @@ pipeline{
      stage('Copy'){                         
          steps{  
                 script{                        
-                    File sourceFolder = Document("D:\my source");
-                    File  destinationFolder = Document("D:\my destination");                                                   
+                    File sourceFolder = vivek("D:\my source");
+                    File  destinationFolder = vivek("D:\my destination");                                                   
                     File[] listOfFiles = sourceFolder.listFiles();
                     echo "Files Total: " + listOfFiles.length;  
 
